@@ -41,6 +41,17 @@ public class PasswordUtils {
     }
 
     public static boolean containsTriple(String password) {
+        char character = ' ';
+        int count = 1;
+        for (char c : password.toCharArray()) {
+            if (c == character) {
+                count += 1;
+            } else {
+                count = 1;
+            }
+            character = c;
+            if (count == 3) return true;
+        }
         return false;
     }
 
