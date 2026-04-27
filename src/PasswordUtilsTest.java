@@ -49,12 +49,23 @@ public class PasswordUtilsTest {
 
     @Test
 
-    void testPasswordContainsAlphaNumeric() {
+    void testPasswordContainsAlphaNumericTrue() {
         //arange
         String password = "weqirj49543jt";
         //act
         boolean actual = PasswordUtils.isAlphanumeric(password);
         //assert
-        assertEquals("true", actual);
+        assertEquals(true, actual);
+    }
+
+    @Test
+
+    void testPasswordContainsAlphaNumericFalse() {
+        //arange
+        String password = "!@#%@#$%";
+        //act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //assert
+        assertEquals(false, actual);
     }
 }
