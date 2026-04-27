@@ -74,7 +74,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testPasswordHasTripleYes() {
+    void testPasswordHasTripleYesTriple() {
         //Arrange
         String password = "Hello111Yes";
         //Act
@@ -84,7 +84,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testPasswordHasTripleNo() {
+    void testPasswordHasTripleNoTriple() {
         //Arrange
         String password = "notriplehere";
         //Act
