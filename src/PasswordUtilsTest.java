@@ -79,13 +79,42 @@ public class PasswordUtilsTest {
     @Test
     void testDescribePasswordDoesNotHave3BsAtTheEnd(){
         //Arrange
-        String password = "public"; //should work
+        String password = "public"; //shouldn't work
         //Act
         boolean actual = PasswordUtils.containsTriple(password);
         //Assert
-        assertEquals(true, actual);
+        assertEquals(false, actual);
     }
     
+     @Test
+    void testDescribePasswordDoesHave2CsAtTheEnd(){
+        //Arrange
+        String password = "publicc"; //shouldn't work
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+@Test
+    void testDescribePasswordDoesHave3SpecailChars(){
+        //Arrange
+        String password = "passwordis!@#"; //should work
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(3, actual);
+    }
+
+@Test
+    void testDescribePasswordDoesNotHaveSpecailChars(){
+        //Arrange
+        String password = "passwordis12345"; //shouldn't work
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(0, actual);
+    }
 
 }
 
