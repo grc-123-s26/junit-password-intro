@@ -39,4 +39,41 @@ public class PasswordUtilsTest {
         // assert
         assertEquals("very long", actual);
     }
+
+    @Test
+    void testisAlphamericTrue(){
+        // arrange
+        String password = "abcd1234";
+
+        // act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+
+        // assert
+        assertEquals(true , actual);
+    }
+
+    @Test
+    void testisAlphamericFalse(){
+        // arrange
+        String password = "abcd1234!";
+
+        // act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+
+        // assert
+        assertEquals(false , actual);
+    }
+
+    @Test
+    void testisAlphamericEmptyString(){
+        // arrange
+        String password = "";
+
+        // act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+
+        // assert
+        assertEquals(true , actual);
+    }
+    
 }
