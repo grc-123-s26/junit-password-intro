@@ -60,4 +60,41 @@ public class PasswordUtilsTest {
         assertEquals(false, actual);
     }
 
+    @Test
+    void testPasswordTripleDiggitstrue(){
+        //Arrange
+        String password ="abcdef123456";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(true, actual);
+    }
+    @Test
+    void testPasswordTripleDiggitsFalseNumbers(){
+        //Arrange
+        String password ="abcdef111111123456";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+@Test
+    void testPasswordTripleDiggitsFalseCharacter(){
+        //Arrange
+        String password ="aaaaabcdef123456";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+@Test
+    void testPasswordTripleDiggitsRandomPlacement(){
+        //Arrange
+        String password ="ab1cda1ef123a14516a";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
 }
