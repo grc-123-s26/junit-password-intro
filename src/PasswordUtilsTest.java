@@ -32,4 +32,54 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals("very long", actual);
     }
+
+    @Test
+    void testPasswordIsAlphanumeric() {
+        // Arrange
+        String password = "password123";
+        // Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordIsNotAlphanumeric() {
+        // Arrange
+        String password = "^^";
+        // Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        // Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordIsAlphanumericNumbers() {
+        // Arrange
+        String password = "123456";
+        // Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordIsAlphanumericWords() {
+        // Arrange
+        String password = "justWords";
+        // Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordIsAlphanumericPercentEnd() {
+        // Arrange
+        String password = "justWords%%";
+        // Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        // Assert
+        assertEquals(false, actual);
+    }
 }
