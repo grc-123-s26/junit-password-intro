@@ -102,4 +102,69 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals(false, actual);
     }
+
+    @Test
+    void testPasswordNumberOfSpecialCharactersZero() {
+        //Arrange
+        String password = "password";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(0, actual);
+    }
+
+    @Test
+    void testPasswordNumberOfSpecialCharactersThreeSameInARow() {
+        //Arrange
+        String password = "pass&&&word";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(3, actual);
+
+    }
+
+    @Test
+    void testPasswordNumberOfSpecialCharactersThreeDifferentInARow() {
+        //Arrange
+        String password = "pass&%*word";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(3, actual);
+
+    }
+
+    @Test
+    void testPasswordNumberOfSpecialCharactersThreeDifferentNotInARow() {
+        //Arrange
+        String password = "pa%ss*wo#rd";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(3, actual);
+
+    }
+
+    @Test
+    void testPasswordNumberOfSpecialCharactersZeroAndEmpty() {
+        //Arrange
+        String password = "";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(0, actual);
+
+    }
+
+    @Test
+    void testPasswordNumberOfSpecialCharactersTenAllCharactersSpecial() {
+        //Arrange
+        String password = "!@#$%^&*()";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(10, actual);
+
+    }
 }
