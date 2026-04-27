@@ -50,4 +50,14 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals(false, actual);
     }
+    @Test
+    void testPasswordAlphanumericEndletter(){
+        //Arrange
+        String password ="abcdef123456*";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
 }
