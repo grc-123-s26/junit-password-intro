@@ -146,4 +146,60 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals(0, actual);
     }
+
+    //Test hasSufficientSpecialCharacters()
+    @Test
+    void testHasSufficientSpecialCharactersNoSpecialCharacters() {
+        //Arrange
+        String password = "hurtg39hgofdihg390";
+        int min = 3;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testHasSufficientSpecialCharactersAboveMinSpecialCharacters() {
+        //Arrange
+        String password = "efewf8#$jhf#fi**";
+        int min = 4;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testHasSufficientSpecialCharactersExactlyMinSpecialCharacters() {
+        //Arrange
+        String password = "efewf8#$jhf#fi**";
+        int min = 5;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testHasSufficientSpecialCharactersBelowMinSpecialCharacters() {
+        //Arrange
+        String password = "efewf8$jhf#fi*";
+        int min = 4;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testHasSufficientSpecialCharactersEmptyString() {
+        //Arrange
+        String password = "";
+        int min = 0;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+        //Assert
+        assertEquals(true, actual);
+    }
 }
