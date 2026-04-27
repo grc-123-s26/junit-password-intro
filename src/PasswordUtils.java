@@ -55,4 +55,8 @@ public class PasswordUtils {
         return false;
     }
 
+    public static int countSpecialCharacters(String password) {
+        return 0;
+    }
+
 }
