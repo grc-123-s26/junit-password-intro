@@ -82,4 +82,14 @@ public class PasswordUtilsTest {
         // Assert
         assertEquals(false, actual);
     }
+
+    @Test
+    void testPasswordDoesRepeatCharacter3Times() {
+        // Arrange
+        String password = "paaasword";
+        // Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(true, actual);
+    }
 }
