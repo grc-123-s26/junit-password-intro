@@ -23,4 +23,18 @@ public class PasswordUtilsTest {
         String actual = PasswordUtils.describePasswordLength(password);
         assertEquals("very long", actual);
     }
+
+    @Test
+    void testPasswordEntirelyAlphanumericIsAlphanumeric() {
+        String password = "password";
+        Boolean actual = PasswordUtils.isAlphanumeric(password);
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordLastCharacterNotAlphanumericIsNotAlphanumeric() {
+        String password = "password@";
+        Boolean actual = PasswordUtils.isAlphanumeric(password);
+        assertEquals(false, actual);
+    }
 }
