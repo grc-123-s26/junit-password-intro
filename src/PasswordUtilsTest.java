@@ -68,4 +68,49 @@ public class PasswordUtilsTest {
         //assert
         assertEquals(false, actual);
     }
+
+    @Test
+
+    void testPasswordContainsAlphaNumericLength() {
+        //arrange
+        String password = "oasijehowh@";
+        //act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+
+    void testPasswordContainsAlphaNumericLiteration() {
+        //arange
+        String password = "@2#uiregjofdubjnj@#@rkgm@";
+        //act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+
+    void testPasswordContainsAlphaNumericEmpty() {
+        //arrange
+        String password = "";
+        //act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //assert
+        assertEquals(false, actual);
+    }
+
+
+    @Test
+
+    void testPasswordContainsALphaNumericTripleTrue() {
+        //arrange
+        String password = "hhh";
+        //acte
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //assert
+        assertEquals(true, actual);
+    }
 }
