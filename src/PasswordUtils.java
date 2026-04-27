@@ -39,4 +39,8 @@ public class PasswordUtils {
         return true;
     }
 
+    public static boolean containsTriple(String password) {
+        return false;
+    }
+
 }
