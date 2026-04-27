@@ -37,4 +37,11 @@ public class PasswordUtilsTest {
         Boolean actual = PasswordUtils.isAlphanumeric(password);
         assertEquals(false, actual);
     }
+
+    @Test
+    void testEmptyPasswordIsNotAlphanumeric() {
+        String password = "";
+        Boolean actual = PasswordUtils.isAlphanumeric(password);
+        assertEquals(false, actual);
+    }
 }
