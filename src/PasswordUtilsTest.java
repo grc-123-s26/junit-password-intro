@@ -82,13 +82,15 @@ public class PasswordUtilsTest {
         assertEquals(false, actual);
     }
 
+    
     @Test
-    void testCountSpecialCharacters(){
+    void testHasSufficientSpecialCharacters(){
         //Arrange
         String password = "";
+        int minimum = 0 ;
         // Act
-        int actual = PasswordUtils.countSpecialCharacters(password);
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
         //Assert
-        assertEquals(0, actual);
+        assertEquals(false, actual);
     }
 }
