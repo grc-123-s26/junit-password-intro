@@ -99,5 +99,54 @@ public class PasswordUtilsTest {
         // assert
         assertEquals(false , actual);
     }
+
+    @Test
+    void testcontainsTripleEmptyString(){
+        // arrange
+        String password = "";
+
+        // act
+        boolean actual = PasswordUtils.containsTriple(password);
+
+        // assert
+        assertEquals(false , actual);
+    }
+
+    @Test
+    void testcountSpecialCharactersReturnInt(){
+        // arrange
+        String password = "abcde1234!!$$";
+
+        // act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+
+        // assert
+        assertEquals(4 , actual);
+    }
+
+    @Test
+    void testcountSpecialCharactersReturnZero(){
+        // arrange
+        String password = "abcde1234";
+
+        // act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+
+        // assert
+        assertEquals(0 , actual);
+    }
+
+    @Test
+    void testcountSpecialCharactersEmptyString(){
+        // arrange
+        String password = "";
+
+        // act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+
+        // assert
+        assertEquals(0 , actual);
+    }
+    
     
 }
