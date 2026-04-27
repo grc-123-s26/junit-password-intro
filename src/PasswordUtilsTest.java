@@ -167,4 +167,60 @@ public class PasswordUtilsTest {
         assertEquals(10, actual);
 
     }
+
+    @Test
+    void testPasswordHasNoSpecialWantsTwo() {
+        //Arrange
+        String password = "password";
+        int minimum = 2;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordHasTwoSpecialWantsTwo() {
+        //Arrange
+        String password = "password@#";
+        int minimum = 2;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordHasNoSpecialWantsZero() {
+        //Arrange
+        String password = "password";
+        int minimum = 0;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordHasOneSpecialWantsTwo() {
+        //Arrange
+        String password = "pass&word";
+        int minimum = 2;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordHasFourSpecialWantsTwo() {
+        //Arrange
+        String password = "pass^&*(word";
+        int minimum = 2;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        //Assert
+        assertEquals(true, actual);
+    }
+
 }
