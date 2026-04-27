@@ -34,14 +34,12 @@ public class PasswordUtils {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
-            }
+            }                
         }
         return true;
     }
 
-        /**
+    /**
     * Checks whether a password has a character that is repeated at least three
     * times in a row.
     *

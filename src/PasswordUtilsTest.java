@@ -33,6 +33,23 @@ public class PasswordUtilsTest {
         assertEquals("very long", actual);
     }
 
+    @Test
+    void testPasswordAlphaNumericWithSymbols() {
+        //Arrange
+        String password = "asdf12$$$%^&*(12";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert
+        assertEquals(false, actual);
+    }
 
-
+    @Test
+    void testPasswordAlphaNumericWithOutSymbols() {
+        //Arrange
+        String password = "bigTEST1234";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert
+        assertEquals(true, actual);
+    }
 }
