@@ -65,6 +65,16 @@ public class PasswordUtilsTest {
         assertEquals(true, actual);
     }
 
+    @Test
+    void testIsAlphanumericSpecialCharacterAtTheEnd() {
+        //Arrange
+        String password = "egfw234fw!";
+        //Act
+        Boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
     //Test containsTriple()
     @Test
     void testContainsTripleContains3InARow() {
@@ -104,5 +114,36 @@ public class PasswordUtilsTest {
         Boolean actual = PasswordUtils.containsTriple(password);
         //Assert
         assertEquals(false, actual);
+    }
+
+    //Test countSpecialCharacters()
+    @Test
+    void testCountSpecialCharactersEmptyString() {
+        //Arrange
+        String password = "";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(0, actual);
+    }
+
+    @Test
+    void testCountSpecialCharacters5Characters() {
+        //Arrange
+        String password = "efewf8#$jhf#fi**";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(5, actual);
+    }
+
+    @Test
+    void testCountSpecialCharactersNoSpecialCharacters() {
+        //Arrange
+        String password = "hurtg39hgofdihg390";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(0, actual);
     }
 }
