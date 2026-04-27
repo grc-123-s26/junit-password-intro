@@ -33,5 +33,32 @@ public class PasswordUtilsTest {
         assertEquals("very long", actual);
     }
     @Test 
-    void testIs
+    void testIsAlphanumeric() {
+        //Arrange
+        String password = "avafvbtrbqerfvfdhuneqerbqebbqterb";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert 
+        assertEquals(true, actual);
+    }
+    @Test 
+    void testSpaceEndAlphanumeric() {
+        //Arrange
+        String password = "1738 ";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert 
+        assertEquals(false, actual);
+    }
+
+    @Test 
+    void testContainsTriple() {
+        //Arrange
+        String password = " ";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert 
+        assertEquals(false, actual);
+    }
+
 }
