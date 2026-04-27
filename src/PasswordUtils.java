@@ -32,7 +32,8 @@ public class PasswordUtils {
     public static boolean isAlphanumeric(String password) {
         for (int i = 0; i < password.length() - 1; i++) {
             char c = password.charAt(i);
-            if (!Character.isLetterOrDigit(c)) {
+            if (!Character.isLetterOrDigit(c)) 
+            {
                 return false;
             }
         }
