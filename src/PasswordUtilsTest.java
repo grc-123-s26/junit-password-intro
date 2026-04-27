@@ -84,12 +84,52 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testPasswordDoesRepeatCharacter3Times() {
+    void testPasswordDoesRepeatCharacterTriplet() {
         // Arrange
-        String password = "paaasword";
+        String password = "pasworddd";
         // Act
         boolean actual = PasswordUtils.containsTriple(password);
         // Assert
         assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordDoesNotRepeatCharacterTriplet() {
+        // Arrange
+        String password = "wolalil";
+        // Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordDoesRepeatCharacterSameWord() {
+        // Arrange
+        String password = "aaaaaaaaaaaaaa";
+        // Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordDoesRepeatCharacteradddda() {
+        // Arrange
+        String password = "adddda";
+        // Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordDoesRepeatCharacterHello() {
+        // Arrange
+        String password = "hello";
+        // Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(false, actual);
     }
 }
