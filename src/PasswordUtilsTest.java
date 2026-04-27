@@ -88,7 +88,7 @@ public class PasswordUtilsTest {
         //act
         boolean actual = PasswordUtils.isAlphanumeric(password);
         //assert
-        assertEquals(true, actual);
+        assertEquals(false, actual);
     }
 
     @Test
@@ -109,9 +109,77 @@ public class PasswordUtilsTest {
         //arrange
         String password = "hhh";
         //act
-        boolean actual = PasswordUtils.isAlphanumeric(password);
+        boolean actual = PasswordUtils.containsTriple(password);
         //assert
         assertEquals(true, actual);
     }
 
+
+   @Test
+   
+   void testPasswordContainsAlphaNumericTripleFalse() {
+    //arrage
+    String password = "password";
+    //act
+    boolean actual = PasswordUtils.containsTriple(password);
+    //assert
+    assertEquals(false, actual);
+   }
+
+   @Test
+
+   void testPasswordContainsAlphaNumericTripleEnding() {
+    //arrage
+    String password = "password!!!";
+    //act
+    boolean actual = PasswordUtils.containsTriple(password);
+    //assert
+    assertEquals(true, actual);
+   }
+
+   @Test
+
+void testCountSpecialCharacters() {
+    //arrange
+    String password = "hello!!";
+    //act
+    int actual = PasswordUtils.countSpecialCharacters(password);
+    //assert
+    assertEquals(2, actual);
+}
+
+@Test
+
+void testCountSpecialCharactersNone() {
+    //arrange
+    String password = "hello123";
+    //act
+    int actual = PasswordUtils.countSpecialCharacters(password);
+    //assert
+    assertEquals(0, actual);
+}
+
+@Test
+
+void testHasSufficientSpecialCharactersTrue() {
+    //arrange
+    String password = "hello!!";
+    int minimum = 2;
+    //act
+    boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+    //assert
+    assertEquals(true, actual);
+}
+
+@Test
+
+void testHasSufficientSpecialCharactersFalse() {
+    //arrange
+    String password = "hello!";
+    int minimum = 2;
+    //act
+    boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+    //assert
+    assertEquals(false, actual);
+}
 }
