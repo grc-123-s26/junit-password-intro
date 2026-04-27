@@ -52,4 +52,54 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals(true, actual);
     }
+
+    @Test 
+    void testPasswordAlphaNumericSymbolEnd() {
+        //Arrange
+        String password = "12345!";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordAlphaNumericSymbolBegginning() {
+        //Arrange
+        String password = "!abcd123";
+        //Act
+        boolean actual = PasswordUtils.isAlphanumeric(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordHasTripleYes() {
+        //Arrange
+        String password = "Hello111Yes";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordHasTripleNo() {
+        //Arrange
+        String password = "notriplehere";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordHasTripleYesContainsThreeNotSequential() {
+        //Arrange
+        String password = "aabbccddeeaabbccddee";
+        //Act
+        boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
 }
