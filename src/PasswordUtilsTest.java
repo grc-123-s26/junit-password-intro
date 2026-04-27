@@ -41,7 +41,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testisAlphamericTrue(){
+    void testIsAlphamericTrue(){
         // arrange
         String password = "abcd1234";
 
@@ -53,7 +53,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testisAlphamericFalse(){
+    void testiIsAlphamericFalse(){
         // arrange
         String password = "abcd1234!";
 
@@ -65,7 +65,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testisAlphamericEmptyString(){
+    void testIsAlphamericEmptyString(){
         // arrange
         String password = "";
 
@@ -77,7 +77,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testcontainsTripleTrue(){
+    void testContainsTripleTrue(){
         // arrange
         String password = "paaassword";
 
@@ -89,7 +89,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testcontainsTripleFalse(){
+    void testContainsTripleFalse(){
         // arrange
         String password = "paassword";
 
@@ -101,7 +101,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testcontainsTripleEmptyString(){
+    void testContainsTripleEmptyString(){
         // arrange
         String password = "";
 
@@ -113,7 +113,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testcountSpecialCharactersReturnInt(){
+    void testCountSpecialCharactersReturnInt(){
         // arrange
         String password = "abcde1234!!$$";
 
@@ -125,7 +125,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testcountSpecialCharactersReturnZero(){
+    void testCountSpecialCharactersReturnZero(){
         // arrange
         String password = "abcde1234";
 
@@ -137,7 +137,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    void testcountSpecialCharactersEmptyString(){
+    void testCountSpecialCharactersEmptyString(){
         // arrange
         String password = "";
 
@@ -147,6 +147,57 @@ public class PasswordUtilsTest {
         // assert
         assertEquals(0 , actual);
     }
+
+    @Test
+    void testHasSufficientCharactersReturnTrue(){
+        // arrange
+        String password = "helloworld!!!";
+        int min = 3;
+
+        // act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+
+        // assert
+        assertEquals(true , actual);
+    }
+
+    @Test
+    void testHasSufficientCharactersReturnFalse(){
+        // arrange
+        String password = "helloworld";
+        int min = 5;
+
+        // act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+
+        // assert
+        assertEquals(false , actual);
+    }
     
+    @Test
+    void testHasSufficientCharactersEmptyStringTrue(){
+        // arrange
+        String password = "";
+        int min = 0;
+
+        // act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+
+        // assert
+        assertEquals(true , actual);
+    }
+
+    @Test
+    void testHasSufficientCharactersEmptyStringFalse(){
+        // arrange
+        String password = "";
+        int min = 10;
+
+        // act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, min);
+
+        // assert
+        assertEquals(false , actual);
+    }
     
 }
