@@ -61,9 +61,9 @@ public static boolean containsTriple(String password) {
 // TODO: Make tests FIRST, then implement the method
     int count = 1;
 // Please have your tests in a separate commit from the implementation
-    for(int i = 0; i < password.length() - 2; i++) {
+    for(int i = 1; i < password.length(); i++) {
         char current = password.charAt(i);
-        char previous = password.charAt(i);
+        char previous = password.charAt(i - 1);
 
         if(current == previous) {
             count++;
