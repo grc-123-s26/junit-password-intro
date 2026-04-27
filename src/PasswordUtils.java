@@ -17,8 +17,10 @@ public class PasswordUtils {
             return "short";
         } else if (length <= 12) {
             return "medium";
-        }
+        } else if (length <= 40) {
         return "long";
+        }
+        return "very long";
     }
 
     /**
@@ -28,15 +30,12 @@ public class PasswordUtils {
      * @return true if the password is alphanumeric, false otherwise
      */
     public static boolean isAlphanumeric(String password) {
-        for (int i = 0; i < password.length() - 1; i++) {
+        for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
     }
-
 }
