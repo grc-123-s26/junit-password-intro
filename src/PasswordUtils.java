@@ -63,8 +63,9 @@ public static boolean containsTriple(String password) {
 // Please have your tests in a separate commit from the implementation
     for(int i = 0; i < password.length() - 2; i++) {
         char current = password.charAt(i);
+        char previous = password.charAt(i);
 
-        if(current == password.charAt(i + 1)) {
+        if(current == previous) {
             count++;
         }
         else {
@@ -91,7 +92,18 @@ public static boolean containsTriple(String password) {
 public static int countSpecialCharacters(String password) {
 // TODO: Make tests FIRST, then implement the method
 // Please have your tests in a separate commit from the implementation
-return 0;
+    int count = 0;
+
+    for(int i = 0; i < password.length(); i++) {
+        char c = password.charAt(i);
+
+
+        if(!Character.isLetterOrDigit(c)) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
 /**
