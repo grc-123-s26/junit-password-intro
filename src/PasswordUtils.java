@@ -50,27 +50,21 @@ public class PasswordUtils {
     * @return true if password has a character repeated three times in a row, false otherwise
     */
     public static boolean containsTriple(String password) {
-        //set char index 0
-        //set char index 1
-        //compare index 0 and 1
-        //if true
-        //count++
-
-        //compare 1 to 2
-
-
-        for (int i = 0; i <= password.length() - 1; i++) {
+        int count = 1;
+        for (int i = password.length() - 1; i > 0; i--) {
 
             char current = password.charAt(i);
-            int count = 0;
-            
-
-
-            
+            char next = password.charAt(i-1);
+            if (current == next) {
+                count++;
+            } else {
+                count = 1;
+            }
+            if (count == 3) {
+                return true;
+            }                              
         }
-    // TODO: Make tests FIRST, then implement the method
-    // Please have your tests in a separate commit from the implementation
-    return false;
+        return false;
     }
 
     /**
