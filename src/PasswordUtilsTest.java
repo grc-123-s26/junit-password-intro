@@ -44,4 +44,25 @@ public class PasswordUtilsTest {
         Boolean actual = PasswordUtils.isAlphanumeric(password);
         assertEquals(false, actual);
     }
+
+    @Test
+    void testPasswordWithNonConsecutiveRepeatingCharactersDoesNotContainTriple() {
+        String password = "pasaswaord";
+        Boolean actual = PasswordUtils.containsTriple(password);
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordWithRepeatingCharactersContainsTriple() {
+        String password = "paaassword";
+        Boolean actual = PasswordUtils.containsTriple(password);
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordWithoutRepeatingCharactersDoesNotContainTriple() {
+        String password = "password";
+        Boolean actual = PasswordUtils.containsTriple(password);
+        assertEquals(false, actual);
+    }
 }
