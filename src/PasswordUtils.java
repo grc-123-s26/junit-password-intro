@@ -17,8 +17,10 @@ public class PasswordUtils {
             return "short";
         } else if (length <= 12) {
             return "medium";
+        } else if (length <= 40) {
+            return "long";
         }
-        return "long";
+        return "very long";
     }
 
     /**
