@@ -17,8 +17,10 @@ public class PasswordUtils {
             return "short";
         } else if (length <= 12) {
             return "medium";
+        } else if (length <= 40) {
+            return "long";
         }
-        return "long";
+        return "very long";
     }
 
     /**
@@ -28,15 +30,68 @@ public class PasswordUtils {
      * @return true if the password is alphanumeric, false otherwise
      */
     public static boolean isAlphanumeric(String password) {
-        for (int i = 0; i < password.length() - 1; i++) {
+        for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
     }
 
+    /**
+     * Checks whether a password has a character that is repeated at least three
+     * times in a row.
+     *
+     * For example, "paaasword" has the letter 'a' three times in a row.
+     *
+     * @param password the password to check
+     * @return true if password has a character repeated three times in a row, false otherwise
+     */
+    public static boolean containsTriple(String password) {
+        int counter = 1;
+        for(int i = 1; i < password.length(); i++)
+        {
+            char c = password.charAt(i);
+            if(c == password.charAt(i-1)){counter++;}
+            else{counter = 1;}
+            if(counter >= 3){return true;}
+        }
+        return false;
+    }
+
+    /**
+     * Returns the number of special characters in the password.
+     *
+     * A special character is any non-alphanumeric (not letter or digit) character.
+     *
+     *
+     * @param password the password to check
+     * @return the count of special characters
+     */
+    public static int countSpecialCharacters(String password) {
+        int counter = 0;
+        for(int i = 0; i < password.length(); i++)
+        {
+            char c = password.charAt(i);
+            if (!Character.isLetterOrDigit(c)) {
+                counter++;
+            } 
+        }
+        return counter;
+    }
+
+    /**
+     * Checks whether a password has at least a minimum number of special characters.
+     *
+     * A special character is any non-alphanumeric (not letter or digit) character.
+     *
+     * @param password the password to check
+     * @param minimum the minimum number of special characters (inclusive)
+     * @return true has the minimum number of special charcters or more, false otherwise
+     */
+    public static boolean hasSufficientSpecialCharacters(String password, int minimum) {
+        if(minimum <= countSpecialCharacters(password)){return true;}
+        return false;
+    }
 }
