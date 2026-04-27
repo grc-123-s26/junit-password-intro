@@ -30,12 +30,10 @@ public class PasswordUtils {
      * @return true if the password is alphanumeric, false otherwise
      */
     public static boolean isAlphanumeric(String password) {
-        for (int i = 0; i < password.length() - 1; i++) {
+        for (int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
@@ -51,8 +49,14 @@ public class PasswordUtils {
      * @return true if password has a character repeated three times in a row, false otherwise
      */
     public static boolean containsTriple(String password) {
-        // TODO: Make tests FIRST, then implement the method
-        // Please have your tests in a separate commit from the implementation
+        int counter = 1;
+        for(int i = 1; i < password.length(); i++)
+        {
+            char c = password.charAt(i);
+            if(c == password.charAt(i-1)){counter++;}
+            else{counter = 1;}
+            if(counter >= 3){return true;}
+        }
         return false;
     }
 

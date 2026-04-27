@@ -44,6 +44,7 @@ public class PasswordUtilsTest {
         assertEquals("very long", actual);
     }
 
+    //Test isAlphanumeric()
     @Test
     void testIsAlphanumericIfFalse() {
         //Arrange
@@ -62,5 +63,46 @@ public class PasswordUtilsTest {
         Boolean actual = PasswordUtils.isAlphanumeric(password);
         //Assert
         assertEquals(true, actual);
+    }
+
+    //Test containsTriple()
+    @Test
+    void testContainsTripleContains3InARow() {
+        //Arrange
+        String password = "paaasword";
+        //Act
+        Boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testContainsTripleContainsMoreThan3InARow() {
+        //Arrange
+        String password = "paasssssssword";
+        //Act
+        Boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testContainsTripleContainsLessThan3InARow() {
+        //Arrange
+        String password = "paasword";
+        //Act
+        Boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testContainsTripleContainsEmptyString() {
+        //Arrange
+        String password = "";
+        //Act
+        Boolean actual = PasswordUtils.containsTriple(password);
+        //Assert
+        assertEquals(false, actual);
     }
 }
