@@ -6,180 +6,176 @@ public class PasswordUtilsTest {
     @Test
     void testDescribePasswordLengthShortPasswordEmptyString() {
 
-        //Arrange
+        // Arrange
         String password = "";
-        //act
+        // act
         String actual = PasswordUtils.describePasswordLength(password);
-        //assert
+        // assert
         assertEquals("short", actual);
 
     }
 
     @Test
     void testDescribePasswordLengthLongPassord() {
-        //range
+        // range
         String password = "hellohowareyoudoingtodaygoodsir";
-        //act
+        // act
         String actual = PasswordUtils.describePasswordLength(password);
-        //assert
+        // assert
         assertEquals("long", actual);
     }
 
     @Test
     void testPasswordLongerThan40charsIsVeryLong() {
-        //arrage
+        // arrage
         String password = "evjndfguhfuherguhefuhufhgsdifughasdffraehgbdfdatthgfewrthbf";
-        //act
+        // act
         String actual = PasswordUtils.describePasswordLength(password);
-        //assert
+        // assert
         assertEquals("very long", actual);
     }
 
-
     @Test
     void testPasswordIsMedium() {
-        //arange
+        // arange
         String password = "helloismy";
-        //act
+        // act
         String actual = PasswordUtils.describePasswordLength(password);
-        //assert
+        // assert
         assertEquals("medium", actual);
     }
-
 
     @Test
 
     void testPasswordContainsAlphaNumericTrue() {
-        //arange
+        // arange
         String password = "weqirj49543jt";
-        //act
+        // act
         boolean actual = PasswordUtils.isAlphanumeric(password);
-        //assert
+        // assert
         assertEquals(true, actual);
     }
 
     @Test
 
     void testPasswordContainsAlphaNumericFalse() {
-        //arange
+        // arange
         String password = "!@#%@#$%";
-        //act
+        // act
         boolean actual = PasswordUtils.isAlphanumeric(password);
-        //assert
+        // assert
         assertEquals(false, actual);
     }
 
     @Test
 
     void testPasswordContainsAlphaNumericLength() {
-        //arrange
+        // arrange
         String password = "oasijehowh@";
-        //act
+        // act
         boolean actual = PasswordUtils.isAlphanumeric(password);
-        //assert
+        // assert
         assertEquals(false, actual);
     }
 
     @Test
 
     void testPasswordContainsAlphaNumericLiteration() {
-        //arange
+        // arange
         String password = "@2#uiregjofdubjnj@#@rkgm@";
-        //act
+        // act
         boolean actual = PasswordUtils.isAlphanumeric(password);
-        //assert
+        // assert
         assertEquals(false, actual);
     }
 
     @Test
 
     void testPasswordContainsAlphaNumericEmpty() {
-        //arrange
+        // arrange
         String password = "";
-        //act
+        // act
         boolean actual = PasswordUtils.isAlphanumeric(password);
-        //assert
+        // assert
         assertEquals(false, actual);
     }
-
 
     @Test
 
     void testPasswordContainsAlphaNumericTripleTrue() {
-        //arrange
+        // arrange
         String password = "hhh";
-        //act
+        // act
         boolean actual = PasswordUtils.containsTriple(password);
-        //assert
+        // assert
         assertEquals(true, actual);
     }
 
+    @Test
 
-   @Test
-   
-   void testPasswordContainsAlphaNumericTripleFalse() {
-    //arrage
-    String password = "password";
-    //act
-    boolean actual = PasswordUtils.containsTriple(password);
-    //assert
-    assertEquals(false, actual);
-   }
+    void testPasswordContainsAlphaNumericTripleFalse() {
+        // arrage
+        String password = "password";
+        // act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // assert
+        assertEquals(false, actual);
+    }
 
-   @Test
+    @Test
 
-   void testPasswordContainsAlphaNumericTripleEnding() {
-    //arrage
-    String password = "password!!!";
-    //act
-    boolean actual = PasswordUtils.containsTriple(password);
-    //assert
-    assertEquals(true, actual);
-   }
+    void testPasswordContainsAlphaNumericTripleEnding() {
+        // arrage
+        String password = "password!!!";
+        // act
+        boolean actual = PasswordUtils.containsTriple(password);
+        // assert
+        assertEquals(true, actual);
+    }
 
-   @Test
+    @Test
 
-void testCountSpecialCharacters() {
-    //arrange
-    String password = "hello!!";
-    //act
-    int actual = PasswordUtils.countSpecialCharacters(password);
-    //assert
-    assertEquals(2, actual);
-}
+    void testCountSpecialCharacters() {
+        // arrange
+        String password = "hello!!";
+        // act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        // assert
+        assertEquals(2, actual);
+    }
 
-@Test
+    @Test
 
-void testCountSpecialCharactersNone() {
-    //arrange
-    String password = "hello123";
-    //act
-    int actual = PasswordUtils.countSpecialCharacters(password);
-    //assert
-    assertEquals(0, actual);
-}
+    void testCountSpecialCharactersNone() {
+        // arrange
+        String password = "hello123";
+        // act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        // assert
+        assertEquals(0, actual);
+    }
 
-@Test
+    @Test
 
-void testHasSufficientSpecialCharactersTrue() {
-    //arrange
-    String password = "hello!!";
-    int minimum = 2;
-    //act
-    boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
-    //assert
-    assertEquals(true, actual);
-}
+    void testHasSufficientSpecialCharactersTrue() {
+        // arrange
+        String password = "hello!!";
+        int minimum = 2;
+        // act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        // assert
+        assertEquals(true, actual);
+    }
 
-@Test
+    @Test
 
-void testHasSufficientSpecialCharactersFalse() {
-    //arrange
-    String password = "hello!";
-    int minimum = 2;
-    //act
-    boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
-    //assert
-    assertEquals(false, actual);
-}
+    void testHasSufficientSpecialCharactersFalse() {
+        // arrange
+        String password = "hello!";
+        int minimum = 2;
+        // act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, minimum);
+        // assert
+        assertEquals(false, actual);
+    }
 }
