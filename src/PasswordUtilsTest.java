@@ -97,4 +97,41 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals(false, actual);
     }
+@Test
+    void testPasswordCountingSpecialCharacterRandomPlacment(){
+        //Arrange
+        String password ="&4234&&Af&";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(4, actual);
+    }
+@Test
+    void testPasswordCountingSpecialCharacterNoCharacter(){
+        //Arrange
+        String password ="12345abecd";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(0, actual);
+    }
+@Test
+    void testPasswordCountingSpecialCharacterAtTheEnd(){
+        //Arrange
+        String password ="12345abecd*";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(1, actual);
+    }
+@Test
+    void testPasswordCountingSpecialCharacterALotDifferent(){
+        //Arrange
+        String password ="!@#$%^&*()";
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(10, actual);
+    }
 }
+
