@@ -172,4 +172,44 @@ public class PasswordUtilsTest {
         // Assert
         assertEquals(true, actual);
     }
+
+    @Test
+    void testPasswordMinimumSpecialCharactersSuperHighMinimum() {
+        // Arrange
+        String password = "#Yo@uC#oul$dNe%verB3^Too&C4*refu1()";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 10);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordMinimumSpecialCharactersBelowMinimum() {
+        // Arrange
+        String password = "PleaseHackMe.";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
+        // Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordMinimumSpecialCharactersNoSpecialCharacters() {
+        // Arrange
+        String password = "NothingSpecialHere123";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 1);
+        // Assert
+        assertEquals(false, actual);
+    }
+
+    @Test
+    void testPasswordMinimumSpecialCharactersBlank() {
+        // Arrange
+        String password = "";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 1);
+        // Assert
+        assertEquals(false, actual);
+    }
 }

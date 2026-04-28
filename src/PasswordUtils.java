@@ -99,6 +99,16 @@ public class PasswordUtils {
     // Please have your tests in a separate commit from the implementation
     // Required: please use countSpecialCharacters as a helper method.
     // Don't just copy/paste the logic!
+    int specialCount = 0;
+    for (int i = 0; i < password.length(); i++) {
+        char c = password.charAt(i);
+        if (!Character.isLetterOrDigit(c)) {
+            specialCount++;
+        }
+    }
+    if (specialCount >= minimum) { //if it is equal to minimum or higher, its true!
+        return true;
+    }
     return false;
     }
 }
