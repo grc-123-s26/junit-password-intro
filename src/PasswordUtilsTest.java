@@ -75,6 +75,54 @@ public class PasswordUtilsTest {
     // Contains Triple Method
 
     @Test
-    void testPasswordContainsTrtiple
+    void testPasswordContainsTripleTrue() {
+        String password = "faaa"; 
+        boolean actual = PasswordUtils.isAlphanumeric(password); 
+        assertEquals(true, actual);
+    }
+
+    @Test 
+    void testPasswordContainsTripleFalse() {
+        String password = "aawfein"; 
+        boolean actual = PasswordUtils.containsTriple(password); 
+        assertEquals(false, actual);
+    }
+
+    @Test 
+    void testPasswordContainsTripleEmpty() {
+        String password = ""; 
+        boolean actual = PasswordUtils.containsTriple(password); 
+        assertEquals(false, actual); 
+    }
+
+    @Test
+    void testPasswordContainsTripleRepetition() {
+        String password = "aaljkwefaoweia0"; 
+        boolean actual = PasswordUtils.containsTriple(password); 
+        assertEquals(false, actual); 
+    }
+
+    // countSpecialCharacters method
+
+    @Test
+    void testPasswordCountSpecialTrue() {
+        String password = "@aohiegwoie@@";
+        int actual = PasswordUtils.countSpecialCharacters(password); 
+        assertEquals(3, actual); 
+    }
+
+    @Test
+    void testPasswordCountSpecialEmpty() {
+        String password = ""; 
+        int actual = PasswordUtils.countSpecialCharacters(password); 
+        assertEquals(0, actual); 
+    }
+
+    @Test
+    void testPasswordCountSpecialLength() {
+        String password = "@asfeio@foiwef2#@$8435^@#";
+        int actual = PasswordUtils.countSpecialCharacters(password); 
+        assertEquals(8, actual); 
+    }
 }
 

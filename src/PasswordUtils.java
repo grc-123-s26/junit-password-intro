@@ -52,7 +52,36 @@ public class PasswordUtils {
     public static boolean containsTriple(String password) {
     // TODO: Make tests FIRST, then implement the method
     // Please have your tests in a separate commit from the implementation
-        return false;
+        int charCount = 1; 
+
+        for (int i = 0; i <= password.length() - 2; i++) {
+            char current = password.charAt(i); 
+
+            if (current == password.charAt(i + 1)) {
+                charCount++; 
+            } else {
+                charCount = 1; 
+            }
+
+            if (charCount == 3) return true; 
+        }
+
+        return false; 
+    }
+
+     /**
+    * Returns the number of special characters in the password.
+    *
+    * A special character is any non-alphanumeric (not letter or digit) character.
+    *
+    *
+    * @param password the password to check
+    * @return the count of special characters
+    */
+    public static int countSpecialCharacters(String password) {
+    // TODO: Make tests FIRST, then implement the method
+    // Please have your tests in a separate commit from the implementation
+        return 0;
     }
 
 }
