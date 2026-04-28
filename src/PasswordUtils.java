@@ -75,9 +75,14 @@ public class PasswordUtils {
     * @return the count of special characters
     */
     public static int countSpecialCharacters(String password) {
-    // TODO: Make tests FIRST, then implement the method
-    // Please have your tests in a separate commit from the implementation
-    return 0;
+    int specialCount = 0;
+    for (int i = 0; i < password.length(); i++) {
+        char c = password.charAt(i);
+        if (!Character.isLetterOrDigit(c)) {
+            specialCount++;
+        }
+    }
+    return specialCount;
     }
 
     /**

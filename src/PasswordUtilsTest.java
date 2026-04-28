@@ -142,4 +142,24 @@ public class PasswordUtilsTest {
         // Assert
         assertEquals(2, actual);
     }
+
+    @Test
+    void testPasswordcountSpecialCharactersBeginningEnd() {
+        // Arrange
+        String password = "!!!!MySpec1alPassw0rd!!!!";
+        // Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        // Assert
+        assertEquals(8, actual);
+    }
+
+    @Test
+    void testPasswordcountSpecialCharactersMixed() {
+        // Arrange
+        String password = "cAnY&uR#aDTh^s?";
+        // Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        // Assert
+        assertEquals(4, actual);
+    }
 }
