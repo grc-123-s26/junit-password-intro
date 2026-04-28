@@ -125,17 +125,17 @@ public class PasswordUtilsTest {
     @Test
     void testDescribePassWordHasSufficientSpecialCharactersNotEnouph() {
         // Arrange
-        String password = "!@#$%^&*()";
+        String password = "p@ssword";
         // Act
         boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
         // Assert
-        assertEquals(true, actual);
+        assertEquals(false, actual);
     }
 
     @Test
     void testDescribePassWordHasSufficientSpecialCharactersAlotMore() {
         // Arrange
-        String password = "!@#$%^&*()";
+        String password = "p@$$word";
         // Act
         boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
         // Assert

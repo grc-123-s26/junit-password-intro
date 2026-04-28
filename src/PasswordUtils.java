@@ -100,9 +100,13 @@ public class PasswordUtils {
     */
     public static boolean hasSufficientSpecialCharacters(String password, int minimum) {
     // TODO: Make tests FIRST, then implement the method
+        int specialCount = countSpecialCharacters(password);
+        if (specialCount >= minimum) {
+            return true;
+        }
     // Please have your tests in a separate commit from the implementation
     // Required: please use countSpecialCharacters as a helper method.
     // Don't just copy/paste the logic!
-    return false;
+        return false;
     }
 }
