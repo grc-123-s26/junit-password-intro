@@ -89,7 +89,7 @@ public class PasswordUtilsTest {
      @Test
     void testDescribePasswordDoesHave2CsAtTheEnd(){
         //Arrange
-        String password = "publicc"; //shouldn't work
+        String password = "publicc"; 
         //Act
         boolean actual = PasswordUtils.containsTriple(password);
         //Assert
@@ -99,7 +99,7 @@ public class PasswordUtilsTest {
 @Test
     void testDescribePasswordDoesHave3SpecailChars(){
         //Arrange
-        String password = "passwordis!@#"; //should work
+        String password = "passwordis!@#"; 
         //Act
         int actual = PasswordUtils.countSpecialCharacters(password);
         //Assert
@@ -109,11 +109,42 @@ public class PasswordUtilsTest {
 @Test
     void testDescribePasswordDoesNotHaveSpecailChars(){
         //Arrange
-        String password = "passwordis12345"; //shouldn't work
+        String password = "passwordis12345"; 
         //Act
         int actual = PasswordUtils.countSpecialCharacters(password);
         //Assert
         assertEquals(0, actual);
+    }
+    @Test
+    void testDescribePasswordDoesHaveSpecailCharsAtBegginning(){
+        //Arrange
+        String password = "!@#$$passwordis12345"; 
+        //Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        //Assert
+        assertEquals(5, actual);
+    }
+
+    @Test
+    void testDescribePasswordDoesHaveSufficientAmountOfSpecialChars(){
+        //Arrange
+        String password = "!@#$$passwordis12345"; 
+        int specialCharCount = 5;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password,specialCharCount);
+        //Assert
+        assertEquals(true, actual);
+    }
+
+     @Test
+    void testDescribePasswordDoesNotHaveSufficientAmountOfSpecialChars(){
+        //Arrange
+        String password = "!@#$$passwordis12345"; 
+        int specialCharCount = 3;
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password,specialCharCount);
+        //Assert
+        assertEquals(false, actual);
     }
 
 }
