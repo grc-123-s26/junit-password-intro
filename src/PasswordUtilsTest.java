@@ -92,5 +92,33 @@ public class PasswordUtilsTest {
         assertEquals(false, actual);
     }
 
-    
+    @Test
+    void testDescribePassWordCountSpecialCharactersNone() {
+        // Arrange
+        String password = "UN01";
+        // Act
+      boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(0, actual);
+    }
+
+    @Test
+    void testDescribePassWordCountSpecialCharactersSome() {
+        // Arrange
+        String password = "UN)!";
+        // Act
+      boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(2, actual);
+    }
+
+    @Test
+    void testDescribePassWordCountSpecialCharactersAlot() {
+        // Arrange
+        String password = "!@#$%^&*()";
+        // Act
+      boolean actual = PasswordUtils.containsTriple(password);
+        // Assert
+        assertEquals(10, actual);
+    }
 }
