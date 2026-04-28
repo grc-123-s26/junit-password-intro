@@ -162,4 +162,14 @@ public class PasswordUtilsTest {
         // Assert
         assertEquals(4, actual);
     }
+
+    @Test
+    void testPasswordMinimumSpecialCharacters() {
+        // Arrange
+        String password = "CloseEnough!!!!";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 4);
+        // Assert
+        assertEquals(true, actual);
+    }
 }
