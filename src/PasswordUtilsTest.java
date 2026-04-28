@@ -86,4 +86,18 @@ public class PasswordUtilsTest {
         int actual = PasswordUtils.countSpecialCharacters(password);
         assertEquals(0, actual);
     }
+
+    @Test
+    void testPasswordWithFourSpecialCharactersHasAtLeastTwoSpecialCharacters() {
+        String password = "p@$$w*rd";
+        Boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testPasswordWithThreeSpecialCharactersDoesNotHaveFourSpecialCharacters() {
+        String password = "p@$sw*rd";
+        Boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 4);
+        assertEquals(false, actual);
+    }
 }
