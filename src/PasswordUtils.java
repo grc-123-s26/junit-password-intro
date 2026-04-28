@@ -17,8 +17,10 @@ public class PasswordUtils {
             return "short";
         } else if (length <= 12) {
             return "medium";
+        } else if (length < 40) {
+            return "long";
         }
-        return "long";
+        return "very long";
     }
 
     /**
@@ -28,15 +30,41 @@ public class PasswordUtils {
      * @return true if the password is alphanumeric, false otherwise
      */
     public static boolean isAlphanumeric(String password) {
-        for (int i = 0; i < password.length() - 1; i++) {
+        if (password.length() == 0) return false;
+        for (int i = 0; i <= password.length() - 1; i++) {
             char c = password.charAt(i);
             if (!Character.isLetterOrDigit(c)) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
+    }
+
+    public static boolean containsTriple(String password) {
+        char character = ' ';
+        int count = 1;
+        for (char c : password.toCharArray()) {
+            if (c == character) {
+                count += 1;
+            } else {
+                count = 1;
+            }
+            character = c;
+            if (count == 3) return true;
+        }
+        return false;
+    }
+
+    public static int countSpecialCharacters(String password) {
+        int count = 0;
+        for (char c : password.toCharArray()) {
+            if (!Character.isLetterOrDigit(c)) count++;
+        }
+        return count;
+    }
+
+    public static boolean hasSufficientSpecialCharacters(String password, int minimum) {
+        return countSpecialCharacters(password) >= minimum;
     }
 
 }
