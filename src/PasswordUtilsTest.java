@@ -121,4 +121,34 @@ public class PasswordUtilsTest {
         // Assert
         assertEquals(10, actual);
     }
+
+    @Test
+    void testDescribePassWordHasSufficientSpecialCharactersNotEnouph() {
+        // Arrange
+        String password = "!@#$%^&*()";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testDescribePassWordHasSufficientSpecialCharactersAlotMore() {
+        // Arrange
+        String password = "!@#$%^&*()";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
+        // Assert
+        assertEquals(true, actual);
+    }
+
+    @Test
+    void testDescribePassWordHasSufficientSpecialCharactersExact() {
+        // Arrange
+        String password = "!@#$%^&*()";
+        // Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 2);
+        // Assert
+        assertEquals(true, actual);
+    }
 }
