@@ -63,4 +63,8 @@ public class PasswordUtils {
         return count;
     }
 
+    public static boolean hasSufficientSpecialCharacters(String password, int minimum) {
+        return false;
+    }
+
 }
