@@ -132,4 +132,14 @@ public class PasswordUtilsTest {
         // Assert
         assertEquals(false, actual);
     }
+
+    @Test
+    void testPasswordcountSpecialCharacters() {
+        // Arrange
+        String password = "GRC@2026!";
+        // Act
+        int actual = PasswordUtils.countSpecialCharacters(password);
+        // Assert
+        assertEquals(2, actual);
+    }
 }
