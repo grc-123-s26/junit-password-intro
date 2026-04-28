@@ -133,5 +133,32 @@ public class PasswordUtilsTest {
         //Assert
         assertEquals(10, actual);
     }
+    @Test
+    void testPasswordMinimumSpecialCharacter3isminfalse(){
+        //Arrange
+        String password ="aa@aaabcdef@123456";
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password,3);
+        //Assert
+        assertEquals(false, actual);
+    }
+    @Test
+    void testPasswordMinimumSpecialCharacter3ismintrue(){
+        //Arrange
+        String password ="aa@aaabc#def@12345$6";
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password,3);
+        //Assert
+        assertEquals(true, actual);
+    }
+        @Test
+    void testPasswordMinimumSpecialCharacterminis0(){
+        //Arrange
+        String password ="aaaaabcdef123456";
+        //Act
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password,0);
+        //Assert
+        assertEquals(true, actual);
+    }
 }
 
