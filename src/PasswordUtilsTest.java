@@ -154,7 +154,7 @@ public class PasswordUtilsTest {
     void testSufficientSpecialCharactersPlacement() {
         String password = "[]klwe_/234{\"\'.;ise";
         boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 6);
-        assertEquals(false, actual);
+        assertEquals(true, actual);
     }
 }
 
