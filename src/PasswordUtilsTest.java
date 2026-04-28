@@ -37,6 +37,8 @@ public class PasswordUtilsTest {
         assertEquals("medium", actual);
     }
 
+    // containsAlphanumeric() method
+
     @Test 
     void testPasswordContainsAlphanumericTrue() {
         String password = "woiefnw2093nk";
@@ -72,7 +74,7 @@ public class PasswordUtilsTest {
         assertEquals(false, actual); 
     }
 
-    // Contains Triple Method
+    // containsTriple() method
 
     @Test
     void testPasswordContainsTripleTrue() {
@@ -123,6 +125,36 @@ public class PasswordUtilsTest {
         String password = "@asfeio@foiwef2#@$8435^@#";
         int actual = PasswordUtils.countSpecialCharacters(password); 
         assertEquals(8, actual); 
+    }
+
+    // hasSufficientSpecialCharacters() method
+
+    @Test
+    void testSufficientSpecialCharactersTrue() {
+        String password = "iwheoif2@$k2#)(_";
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 6);
+        assertEquals(true, actual); 
+    }
+
+    @Test
+    void testSufficientSpecialCharactersFalse() {
+        String password = "ahiowef@#^!"; 
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 10);
+        assertEquals(false, actual);
+    }
+
+    @Test 
+    void testSufficientSpecialCharactersEmpty() {
+        String password = ""; 
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 1);
+        assertEquals(false, actual); 
+    }
+
+    @Test
+    void testSufficientSpecialCharactersPlacement() {
+        String password = "[]klwe_/234{\"\'.;ise";
+        boolean actual = PasswordUtils.hasSufficientSpecialCharacters(password, 6);
+        assertEquals(false, actual);
     }
 }
 
