@@ -87,7 +87,7 @@ public class PasswordUtilsTest {
         // Arrange
         String password = "aalleexx";
         // Act
-      boolean actual = PasswordUtils.containsTriple(password);
+        boolean actual = PasswordUtils.containsTriple(password);
         // Assert
         assertEquals(false, actual);
     }
@@ -97,7 +97,7 @@ public class PasswordUtilsTest {
         // Arrange
         String password = "UN01";
         // Act
-      boolean actual = PasswordUtils.containsTriple(password);
+        int actual = PasswordUtils.countSpecialCharacters(password);
         // Assert
         assertEquals(0, actual);
     }
@@ -107,7 +107,7 @@ public class PasswordUtilsTest {
         // Arrange
         String password = "UN)!";
         // Act
-      boolean actual = PasswordUtils.containsTriple(password);
+        int actual = PasswordUtils.countSpecialCharacters(password);
         // Assert
         assertEquals(2, actual);
     }
@@ -117,7 +117,7 @@ public class PasswordUtilsTest {
         // Arrange
         String password = "!@#$%^&*()";
         // Act
-      boolean actual = PasswordUtils.containsTriple(password);
+        int actual = PasswordUtils.countSpecialCharacters(password);
         // Assert
         assertEquals(10, actual);
     }

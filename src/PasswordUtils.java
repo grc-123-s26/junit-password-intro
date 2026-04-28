@@ -48,24 +48,24 @@ public class PasswordUtils {
 * @param password the password to check
 * @return true if password has a character repeated three times in a row, false otherwise
 */
-public static boolean containsTriple(String password) {
+    public static boolean containsTriple(String password) {
 // TODO: Make tests FIRST, then implement the method
-int count = 1;
-for (int i = 0; i < password.length() - 1; i++) {
-    char c = password.charAt(i);
-
-    if (c == password.charAt(i + 1)) {
-        count ++;
-        if (count >= 3) {
-            return true;
+        int count = 1;
+        for (int i = 0; i < password.length() - 1; i++) {
+            char c = password.charAt(i);
+    
+            if (c == password.charAt(i + 1)) {
+                count ++;
+                if (count >= 3) {
+                    return true;
+                }
+            } else {
+                count = 1;
+            }
         }
-    } else {
-        count = 1;
-    }
-}
 // Please have your tests in a separate commit from the implementation
-return false;
-}
+        return false;
+    }
 
 /**
 * Returns the number of special characters in the password.
@@ -76,11 +76,18 @@ return false;
 * @param password the password to check
 * @return the count of special characters
 */
-public static int countSpecialCharacters(String password) {
+    public static int countSpecialCharacters(String password) {
 // TODO: Make tests FIRST, then implement the method
+        int count = 0;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (!Character.isLetterOrDigit(c)) {
+                count++;
+            }
+        }
 // Please have your tests in a separate commit from the implementation
-return 0;
-}
+        return count;
+    }
 
 /**
 * Checks whether a password has at least a minimum number of special characters.
